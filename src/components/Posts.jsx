@@ -22,6 +22,7 @@ export default function Posts() {
     getPosts();
   }, [BASE_URL]);
 
+  // Implement conditionals to only show posts if logged in, w link to login.
   return (
     <div>
       <h2>Post List</h2>
