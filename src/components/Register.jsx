@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 
 
 const COHORT_NAME = '2302-ACC-PT-WEB-PT-B';
-  const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
+const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
 export default function Register( { setToken } ) {
     const [ username, setUsername ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ error, setError ] = useState(null);
     // const [ messages, setMessage ] = useState([]);
+    // const [ token, setToken ] = useState("");
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -33,6 +34,7 @@ export default function Register( { setToken } ) {
             const result = response.data
             console.log(result)
             setToken(result)
+            localStorage.setItem("token" , result.data.token);
         } catch (err) {
             console.error(err);
             setError("An error occured while registering.");

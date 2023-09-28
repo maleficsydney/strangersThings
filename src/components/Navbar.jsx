@@ -7,7 +7,7 @@ export default function Navbar() {
         {/* <Link to = "/"> Home </Link> */}
         <Link to = "/home"> Home </Link>
         <Link to = "/posts"> Posts </Link>
-        <Link to = "/profile"> Profile </Link>
+        <Link to = "/login"> Login </Link>
         {/* <Link to = "/login"> Log In </Link>
         <Link to = "/register"> Register </Link> */}
 
