@@ -16,24 +16,26 @@ export default function Register( { setToken } ) {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            const response = await axios.post(
+            const response = await fetch(
                 `${BASE_URL}/users/register`,
                     {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
                         user: {
                             username: username,
                             password: password
                         }
-                    },
-                    {
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    }
-                );
+                    })}
+                    
+                    
+        );
             // const result = await response.json();
-            const result = response.data
+            const result = await response.json();
             console.log(result)
-            setToken(result)
+            setToken(result.data.token)
             localStorage.setItem("token" , result.data.token);
         } catch (err) {
             console.error(err);
