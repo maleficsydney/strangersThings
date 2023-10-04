@@ -9,31 +9,33 @@ const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 export default function Login() {
     const [ username, setUsername ] = useState("");
     const [ password, setPassword ] = useState("");
+    const [token, setToken] = useState("");
     const [ error, setError ] = useState(null);
     // const [ messages, setMessage ] = useState([]);
-    const [ token, setToken ] = useState("");
+    // const [ token, setToken ] = useState("");
 
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            const response = await axios.post(
+            const response = await fetch(
                 `${BASE_URL}/users/login`,
                     {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
                         user: {
                             username: username,
                             password: password
                         }
-                    },
-                    {
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    }
-                );
+                    })}
+                    
+                    
+        );
             // const result = await response.json();
-            const result = response.data
+            const result = await response.json();
             console.log(result)
-            console.log("set token")
             setToken(result.data.token)
             localStorage.setItem("token" , result.data.token);
         } catch (err) {

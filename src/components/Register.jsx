@@ -6,10 +6,11 @@ import { Link } from "react-router-dom";
 const COHORT_NAME = '2302-ACC-PT-WEB-PT-B';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
-export default function Register( { setToken } ) {
+export default function Register( {} ) {
     const [ username, setUsername ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ error, setError ] = useState(null);
+    const [token, setToken] = useState("");
     // const [ messages, setMessage ] = useState([]);
     // const [ token, setToken ] = useState("");
 

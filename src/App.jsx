@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import Posts from './components/Posts'
 import Register from './components/Register'
 import Login from './components/Login'
+import Home from './components/Home'
 import { useState } from 'react'
 
 /* To do:
@@ -14,18 +15,20 @@ import { useState } from 'react'
 
 function App() {
 
-  const [ token, setToken ] = useState(null);
+  // const [ token, setToken ] = useState(null);
 
   return (
     <>
-  <div id="main-page">
+  <div className="main-page">
     <Navbar />
+    {/* <Home /> */}
     <Routes>
-      {/* <Route path='/' element={<Home />} /> */}
+      <Route path='/' element={<Home />} />
       <Route path='/posts' element={<Posts />} />
       <Route path='/profile' element={<Profile />} />
-      <Route path='/login' element={<Login />} token={token} setToken={setToken} />
-      <Route path='/register' element={<Register />} token={token} setToken={setToken} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/register' element={<Register />} />
+      {/* token={token} setToken={setToken} */}
     </Routes>
 
   </div>
